@@ -1,0 +1,42 @@
+
+#If we list all the natural numbers below 10 that are multiples of 3 or 5,
+# we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+#Find the sum of all the multiples of 3 or 5 below 1000.
+
+def multiples(a,b,limit):
+    """
+    Input: Three integers
+    Output: A list of all multiples of a and b less than the limit
+    Purpose: Create a list of all multiples of a and b less than the limit
+    """
+    multiples_list = []
+    new_multiple_a = a
+    new_multiple_b = b
+    
+    while new_multiple_a < limit:
+        multiples_list.append(new_multiple_a)
+        new_multiple_a = new_multiple_a + a
+
+    while new_multiple_b < limit:
+        multiples_list.append(new_multiple_b)
+        new_multiple_b = new_multiple_b + b
+    
+    multiples_set = set(multiples_list)    
+    
+    return(multiples_set)
+
+
+def sum_set(multiples_set):
+    """
+    Input: A set
+    Output: An integer
+    Purpose: Sum all of the integers in a set
+    """
+    
+    sum_set = 0
+    
+    for i in multiples_set:
+        sum_set = sum_set + i
+    
+    return(sum_set)
