@@ -27,6 +27,9 @@ def factor(integer):
        else: i = i + 1
        
    print(factor_list)
+   #Side note, I totally recognize that the last number in the
+   #list will always the biggest factor. I could have just 
+   #pulled the last number from the list.
    
    for factor in factor_list:
        if factor > biggest_factor:
