@@ -1,0 +1,59 @@
+"""
+Created on Tue May  1 00:34:41 2018
+
+@author: Liv d'Aliberti
+"""
+
+#A palindromic number reads the same both ways. 
+#The largest palindrome made from the product of two 2-digit numbers 
+#is 9009 = 91 × 99.
+
+#Find the largest palindrome made from the product of two 3-digit numbers.
+
+def palindrome(integer):
+    """
+    Input: Integer
+    Output: Boolean
+    Purpose: If integer is palindrome, output true. If integer
+    is not a palindrome, output false
+    """
+    integer = str(integer)
+    n = len(integer) - 1
+    i = 0
+ 
+    while i <= n:
+        if integer[i] == integer[n]:
+            i = i + 1
+            n = n - 1
+        else: return(False)
+    
+    return(True)
+    
+
+
+def list_palindrome(i, limit):
+    """
+    Input: Two Integers
+    Output: Three Integers
+    Purpose: Return the largest palindrome made by multiplying
+    two numbers between i and the limit
+    """
+    max_k = 0
+    while i < limit:
+        j = i
+        while j < limit:
+            #print(i, j)
+            j = j + 1
+            k = i * j
+            if palindrome(k) == True:
+                if k > max_k:
+                    max_i = i
+                    max_j = j
+                    max_k = k
+            
+        i = i + 1
+    
+    print(max_i, max_j, max_k)
+
+#Solution to this particular problem: 913 * 993 = 906609
+        
