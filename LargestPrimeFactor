@@ -1,0 +1,37 @@
+"""
+Created on Tue May  1 00:03:18 2018
+
+@author: Liv d'Aliberti
+"""
+
+#The prime factors of 13195 are 5, 7, 13 and 29.
+
+#What is the largest prime factor of the number 600851475143?
+
+def factor(integer):
+   """
+   Input: integer
+   Output: list
+   Purpose: find all the factors of an integer
+   """
+   i = 2
+   factor_list = []    
+   biggest_factor = 0
+
+   while i <= integer:
+       #print(i)
+       if integer % i == 0:
+           integer = integer / i
+           #print(i)
+           factor_list.append(i)
+       else: i = i + 1
+       
+   print(factor_list)
+   
+   for factor in factor_list:
+       if factor > biggest_factor:
+           biggest_factor = factor
+   
+   print(biggest_factor)
+
+#For this particular problem, the solution is 6857
