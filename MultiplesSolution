@@ -40,3 +40,5 @@ def sum_set(multiples_set):
         sum_set = sum_set + i
     
     return(sum_set)
+
+#The solution to the specific problem is: 233168
