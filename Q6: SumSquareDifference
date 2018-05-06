@@ -1,0 +1,73 @@
+"""
+Created on Tue May  1 19:30:59 2018
+
+@author: Liv d'Aliberti
+"""
+
+#The sum of the squares of the first ten natural numbers is,
+#1^2 + 2^2 + ... + 10^2 = 385
+
+#The square of the sum of the first ten natural numbers is,
+#(1 + 2 + ... + 10)^2 = 552 = 3025
+
+#Hence the difference between the sum of the squares of the 
+#first ten natural numbers and the square of the sum is 3025 − 385 = 2640.
+
+#Find the difference between the sum of the squares of the 
+#first one hundred natural numbers and the square of the sum.
+
+def sum_squares(user_input):
+    """
+    Input: Integer
+    Outuput: Integer
+    Purpose: Find the sum of squares from 1 to the user_input value
+    """
+    i = 1
+    squares_list = []
+    sum_squares_total = 0
+    
+    while i <= user_input:
+        square = i * i
+        squares_list.append(square)
+        i = i + 1
+    
+    for i in squares_list:
+        sum_squares_total = sum_squares_total + i
+    
+    return(sum_squares_total)
+
+def square_sum(user_input):
+    """
+    Input: Integer
+    Output: Integer
+    Purpose: Find the square of the sum of numbers from 1 to the user_input
+    value
+    """
+    sum_number_list = 0
+    
+    number_list = list(range(1, user_input + 1))
+    
+    for i in number_list:
+        sum_number_list = sum_number_list + i
+    
+    square_sum_total = sum_number_list * sum_number_list
+    
+    return(square_sum_total)
+    
+def difference(user_input):
+    """
+    Input: Integer
+    Output: Integer
+    Purpose: Find the difference between the square of the sum of numbers
+    and the sum of the square of numbers from 1 to the user_input value
+    """
+
+    sum_squares_output = sum_squares(user_input)
+    
+    squares_sum_output = square_sum(user_input)
+
+    difference = squares_sum_output - sum_squares_output
+
+    return(difference)       
+    
+#Solution to this particular problem is 25164150
