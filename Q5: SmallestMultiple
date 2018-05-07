@@ -1,0 +1,71 @@
+"""
+Created on Sun May  6 19:09:35 2018
+
+@author: Liv d'Aliberti
+"""
+
+#2520 is the smallest number that can be divided by each of the numbers 
+#from 1 to 10 without any remainder.
+
+#What is the smallest positive number that is evenly divisible by all 
+#of the numbers from 1 to 20?
+
+def prime(divisor):
+    """
+    Input: Integer
+    Output: Boolean
+    Purpose: Determine whether a number is prime
+    """
+    
+    i = divisor - 1
+    prime = True
+    
+    while i > 1 & prime == True:
+        #print(i)
+        if divisor % i == 0:
+            #print(i)
+            return(False)
+        else:
+            i = i - 1    
+    
+    return(True)
+
+def smallest_divisor(user_input):
+    """
+    Input: Integer
+    Output: Boolean
+    Purpose: Find the smallest number that can be divided by each of the
+    numbers from 1 to user_input without any remainder
+    """
+    prime_list = []
+    solution = False
+    divisors = user_input
+    
+    while divisors > 1:
+        if prime(divisors) == True:
+            prime_list.append(divisors)
+        divisors = divisors - 1
+    
+    divisors = user_input    
+    smallest_prime_divisor = 1
+    
+    for i in prime_list:
+        smallest_prime_divisor = smallest_prime_divisor * i
+    
+    current_divisor = smallest_prime_divisor
+    
+    while solution == False:
+        #print(divisors)
+        if divisors == 1:
+            solution = True
+        if current_divisor % divisors == 0:
+            divisors = divisors - 1
+            #print(current_divisor)
+        else:
+            divisors = user_input
+            current_divisor = current_divisor + smallest_prime_divisor
+       
+    
+    return(current_divisor)
+
+#Solution to this particular question is : 232792560
