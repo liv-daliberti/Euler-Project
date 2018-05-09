@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon May  7 00:25:32 2018
+
+@author: Liv d'Aliberti
+"""
+#The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+
+#Find the sum of all the primes below two million.
+
+#In solving this problem, I learned about this thing called
+#the Sieve of Eratosthenes which is apparently a "trick" for
+#finding prime numbers. It finds primes by iteratively
+#marking as composite the multiples of each prime, starting
+#with 2. The multiples of a given prime are generated as a
+#sequence of numbers starting from that prime. See this link 
+#to see what I learned: 
+#https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+
+def primes_less_than(divisor):
+    """
+    Input: Integer
+    Output: Integer
+    Purpose: Create a function that finds all primes less than 2,000,000
+    and returns the sum of all primes less than 2,000,000
+    """
+    
+    potential_primes_set = set(range(2, divisor))
+    multiples = set()
+    primes = set()
+    
+    for i in potential_primes_set:
+        if i not in multiples:
+            primes.add(i)
+            for j in range(i*2, divisor, i):
+                multiples.add(j)
+
+    return(sum(primes))        
+ 
+
+#The solution for this particular problem is 142,913,828,922
+    
