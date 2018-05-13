@@ -1,0 +1,69 @@
+"""
+Created on Sun May 13 14:58:56 2018
+
+@author: Liv d'Aliberti
+"""
+
+#The following iterative sequence is defined for the set of 
+#positive integers:
+
+#n → n/2 (n is even)
+#n → 3n + 1 (n is odd)
+
+#Using the rule above and starting with 13, we generate the 
+#following sequence:
+
+#13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
+
+#It can be seen that this sequence (starting at 13 and finishing at 
+#1) contains 10 terms. Although it has not been proved yet 
+#(Collatz Problem), it is thought that all starting numbers finish at 1.
+
+#Which starting number, under one million, produces the longest chain?
+
+#NOTE: Once the chain starts the terms are allowed to go above one million.
+
+
+def collzat_chain(n):
+    """
+    Input: Integer
+    Output: List
+    Purpose: Create a collzat chain starting at the number given by user_input
+    as described by the above rules
+    """
+    collzat_chain = set()
+    
+    while n > 1:
+        collzat_chain.add(n)
+        if n % 2 == 0:
+            n = n / 2
+        else:
+            n = 3 * n + 1
+    
+    collzat_chain.add(1)
+
+    return(len(collzat_chain))
+
+def collzat_chain_lengths(user_input):
+    """
+    Input: Integer
+    Output: Two inegers, the number for the longest chain, and the
+    length of the chain
+    Purpose: Find the longest collzat chain less than or equal to user_input
+    """
+    #length_dictionary = {}
+    max_length = 0
+    
+    while user_input > 1:
+        #length_dictionary[user_input] = collzat_chain(user_input)
+        if collzat_chain(user_input) > max_length:
+            max_length = collzat_chain(user_input)
+            number_longest_chain = user_input
+            #print(user_input, max_length)
+        user_input = user_input - 1
+    
+
+    return(number_longest_chain, max_length)
+    
+#The solution to this particular problem is: (837799, 525)
+  
