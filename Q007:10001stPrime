@@ -1,0 +1,33 @@
+"""
+Created on Fri May 18 22:04:05 2018
+
+@author: Liv d'Aliberti
+"""
+
+def primes_finder(user_input):
+    """
+    Input: Integer
+    Output: Integer
+    Purpose find the 10001th prime number, or
+    the nth prime number, where n = user_input
+    """
+    
+    #200,000 was chosen as a 'hot take' that the 10,001
+    #prime was probably less than 200,000. The number can 
+    #entirely be adjusted
+    potential_primes_set = set(range(2, 200000))
+    multiples = set()
+    primes = set()
+    count = 0
+    
+    for i in potential_primes_set:
+        if i not in multiples:
+            primes.add(i)
+            count = count + 1
+            
+            for j in range(i*2, 200000, i):
+                multiples.add(j)
+        if count == user_input:
+            return(i)
+
+#solution to this particular problem is 104,743
