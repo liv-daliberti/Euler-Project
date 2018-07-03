@@ -1,0 +1,38 @@
+"""
+Created on Tue Jul  3 01:44:06 2018
+
+@author: Liv d'Aliberti
+"""
+
+with open('names.txt') as f:
+    names = f.read()
+
+def sortnames(names):
+    """
+    Input: A list of names
+    Output: The sum of all the letters of all the names multiplied by 
+    the names place in alphabetical order in the file
+    Purpose:
+    """
+    name_list = names.split(",")
+    count = 1
+    file_sum = 0    
+    letters_numbers = { k: (v+1) for v, 
+                       k in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
+
+    name_list.sort()
+    #print(letters_numbers)
+    
+    
+    for name in name_list:
+        name = name.replace('"','')
+        name_value = 0
+        for letter in name:
+            letter_value = letters_numbers.get(letter)
+            name_value = name_value + letter_value
+        name_value_total = name_value * count
+        #print(name_value_total, count, name_value,name)
+        count = count + 1
+        file_sum = file_sum + name_value_total
+    
+    return(file_sum)
