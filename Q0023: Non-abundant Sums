@@ -1,0 +1,86 @@
+"""
+Created on Fri Aug 17 21:07:24 2018
+
+@author: Liv d'Aliberti
+
+A perfect number is a number for which the sum of its proper divisors 
+is exactly equal to the number. For example, the sum of the proper 
+divisors of 28 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 
+is a perfect number.
+
+A number n is called deficient if the sum of its proper divisors is less 
+than n and it is called abundant if this sum exceeds n.
+
+As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the 
+smallest number that can be written as the sum of two abundant numbers 
+is 24. By mathematical analysis, it can be shown that all integers greater 
+than 28123 can be written as the sum of two abundant numbers. However, 
+this upper limit cannot be reduced any further by analysis even though 
+it is known that the greatest number that cannot be expressed as the sum 
+of two abundant numbers is less than this limit.
+
+Find the sum of all the positive integers which cannot be written 
+as the sum of two abundant numbers.
+"""
+
+def abundant_number_test(integer_input):
+    """
+    Purpose: Determine whether a number is an abundant number of a 
+    non-abundant number
+    Input: An integer value
+    Output: A True or False Statement
+    """
+    i = 1
+    divisor_sum = 0
+    
+    while i < integer_input:
+        if (integer_input % i) == 0:
+            divisor_sum = divisor_sum + i
+        
+        i = i + 1
+        
+    if divisor_sum > integer_input:
+        #If the sum of divisors is greater than the integer input, return
+        #true
+        return(True)
+    else:
+        return(False)
+    
+
+def abundant_list(length):
+    """
+    Purpose: Find all integers less than 28123 (the upper limit) that
+    are not the sum of two abundant numbers.
+    Input: The max integer evaluated
+    Outputs: The sum of all integers that are not the sum of two abundant
+    numbers.
+    """
+    j = 1
+    l = 1
+    abundant_set = set()
+    #set of all abundant numbers
+    abundant_sums = set()
+    #set of all sums of two abundant numbers
+    not_abundant_sums = 0
+    
+    
+    while j < length:
+        #Determine, for all numbers less that the max, whether abundant
+        #or non-abundant
+        if abundant_number_test(j) == True:
+            abundant_set.add(j)
+            for k in abundant_set:
+            #If abundant, then add all possible summations to the set of
+            #abundant sum numbers
+                abundant_sums.add(k+j)
+        j = j + 1
+    
+    while l < length:
+        #If not in the set of abundant sum numbers, add to not_abundant_sums
+        if l not in abundant_sums:
+            not_abundant_sums = not_abundant_sums + l
+        l = l + 1
+    
+    return(not_abundant_sums)
+
+        
