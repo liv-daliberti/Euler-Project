@@ -1,0 +1,38 @@
+"""
+Created on Sat Aug 18 22:43:42 2018
+
+@author: Liv d'Aliberti
+
+n! means n × (n − 1) × ... × 3 × 2 × 1
+
+For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,
+and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+
+Find the sum of the digits in the number 100!
+"""
+
+def factorial(n):
+    """
+    Purpose: Recursively find the factorial of a number
+    Input: The factorial number, n >= 1
+    Output: The factorial in its multiplied-out form
+    """
+    if n == 1:
+        return(1)
+    
+    return(n * factorial(n-1))
+    
+def sum_digits(user_entry):
+    """
+    Purpose: Sum the digits of a factorial number
+    Input: The factorial number, n >= 1
+    Output: The digits of the factorial summed
+    """
+    digit_sum = 0
+    
+    factorial_string = str(factorial(user_entry))
+    
+    for i in factorial_string:
+        digit_sum = int(i) + digit_sum
+    
+    return(digit_sum)
